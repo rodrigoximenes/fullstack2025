@@ -20,7 +20,27 @@ namespace MinhaApp.WebAPI.Controllers
         [HttpPost]
         public IActionResult Adicionar([FromBody] Aluno aluno)
         {
-            return Ok(_alunoServico.AdicionarAluno(aluno.Nome, aluno.Nota));
+            return Ok(_alunoServico.AdicionarAluno(aluno.Id, aluno.Nome, aluno.Nota));
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult ObterPorId(int id)
+        {
+            var aluno = _alunoServico.ObterPorId(id);
+
+            if(aluno == null)
+            {
+                return NotFound("Aluno não encontrado");
+            }
+
+            return Ok(aluno);
+        }
+
+        [HttpGet]
+        public IActionResult ObterTodos()
+        {
+            var alunos = _alunoServico.ObterTodos();
+            return Ok(alunos);
         }
     }
 }

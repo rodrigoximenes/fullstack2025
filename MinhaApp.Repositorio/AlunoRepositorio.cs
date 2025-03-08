@@ -15,5 +15,15 @@ namespace MinhaApp.Repositorio
         {
             _alunos.Add(aluno);
         }
+
+        public List<Aluno> ObterTodos()
+        {
+            return _alunos;
+        }
+
+        public Aluno? ObterPorId(int id)
+        {
+            return _alunos.FirstOrDefault(aluno => aluno.Id == id);
+        }
     }
 }

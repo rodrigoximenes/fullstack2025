@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MinhaApp.Dominio;
 
 namespace MinhaApp.Servico
 {
     public interface IAlunoServico
     {
-        bool AdicionarAluno(string nome, decimal nota);
+        bool AdicionarAluno(int id, string nome, decimal nota);
+        List<Aluno> ObterTodos();
+        Aluno? ObterPorId(int id);
+        bool AtualizarAluno(Aluno aluno);
+        bool RemoverAluno(int id);
     }
 }
